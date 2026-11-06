@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Design Review</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1 id="siteTitle">Website Design Review</h1>
+  <nav><a href="index.html" class="active">Vote</a><a href="results.html">Results</a></nav>
+</header>
+
+<main class="container">
+
+  <!-- STEP 1: who are you -->
+  <section id="intro" class="card intro">
+    <h2>Help us choose the website</h2>
+    <p class="muted">Review three designs, rate each out of 5 stars, and vote for your favourite. Takes about 5 minutes.</p>
+    <label class="f" for="name">Your name</label>
+    <input id="name" class="input" maxlength="80" placeholder="e.g. Priya Sharma" autocomplete="name">
+    <label class="f" for="email">Your email</label>
+    <input id="email" class="input" type="email" maxlength="120" placeholder="you@example.com" autocomplete="email">
+    <div id="introError" class="error"></div>
+    <button id="startBtn" class="btn">Start review →</button>
+  </section>
+
+  <!-- STEP 2: review -->
+  <section id="review" class="hidden">
+    <div class="tabs" id="tabs"></div>
+    <div class="review-grid">
+      <div>
+        <div class="preview-bar">
+          <strong id="stageTitle"></strong>
+          <div style="display:flex;gap:10px;align-items:center">
+            <div class="seg" id="devSeg">
+              <button data-dev="desktop" class="on">Desktop</button>
+              <button data-dev="tablet">Tablet</button>
+              <button data-dev="mobile">Mobile</button>
+            </div>
+            <a id="openFull" class="btn ghost" style="padding:7px 12px;font-size:13px" target="_blank" rel="noopener">Open full ↗</a>
+          </div>
+        </div>
+        <div class="stage" id="stage"><iframe id="frame" title="Design preview"></iframe></div>
+      </div>
+
+      <aside class="card panel">
+        <h3 id="rateTitle"></h3>
+        <p class="muted" style="font-size:13px">1 star = poor · 5 stars = excellent</p>
+        <div id="critList"></div>
+
+        <label class="f" for="needs">⚠️ Needs attention <span class="muted">(what should be fixed?)</span></label>
+        <textarea id="needs" class="input" maxlength="1000" placeholder="e.g. Contact button is hard to find…"></textarea>
+
+        <label class="f" for="liked">👍 What works well? <span class="muted">(optional)</span></label>
+        <textarea id="liked" class="input" maxlength="1000" placeholder="e.g. Hero section is bold…"></textarea>
+
+        <div class="vote-box" id="voteBox">
+          <label><input type="radio" name="vote" id="voteRadio"> <span id="voteLabel"></span></label>
+        </div>
+      </aside>
+    </div>
+
+    <div class="submit-bar">
+      <button id="submitBtn" class="btn">Submit my vote 🚀</button>
+      <span id="submitMsg" class="error" style="margin:0"></span>
+    </div>
+  </section>
+
+  <!-- STEP 3: done -->
+  <section id="done" class="card thanks hidden">
+    <div class="big">🎉</div>
+    <h2>Thanks, your vote is in!</h2>
+    <p class="muted" style="margin:8px 0 8px">Your vote is saved in this browser and a file <b>vote-….json</b> was downloaded.</p>
+    <p style="margin:0 0 20px"><b>Please send that file to the review organiser</b> so it is counted.</p>
+    <button class="btn ghost" id="redownload" style="margin-right:8px">Download vote file again</button>
+    <a class="btn" href="results.html">See results →</a>
+  </section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/vote.js"></script>
+</body>
+</html>
